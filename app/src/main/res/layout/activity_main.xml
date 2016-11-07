@@ -9,7 +9,6 @@
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal"
@@ -56,7 +55,52 @@
     </LinearLayout>
 
 
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP2_1" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP2_2" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP2_3" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP2_4" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="/"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP2mask"/>
+
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -69,7 +113,13 @@
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/result"
+        android:id="@+id/result1"
+        android:textSize="19sp"/>
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/result2"
         android:textSize="19sp"/>
 
 

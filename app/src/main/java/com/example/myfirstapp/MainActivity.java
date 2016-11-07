@@ -29,10 +29,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void calculateNet(View view){
-        EditText firstByteIP1 = (EditText) findViewById(R.id.IP1_1);
-        TextView textout = (TextView) findViewById(R.id.result);
+    EditText IP1_1;
+    EditText IP1_2;
+    EditText IP1_3;
+    EditText IP1_4;
+    EditText IP1_mask;
+    EditText IP2_1;
+    EditText IP2_2;
+    EditText IP2_3;
+    EditText IP2_4;
+    EditText IP2_mask;
 
-        textout.setText(firstByteIP1.getText());
+    public void calculateNet(View view){
+        IP1_1 = (EditText) findViewById(R.id.IP1_1);
+        IP1_2 = (EditText) findViewById(R.id.IP1_2);
+        IP1_3 = (EditText) findViewById(R.id.IP1_3);
+        IP1_4 = (EditText) findViewById(R.id.IP1_4);
+        IP1_mask = (EditText) findViewById(R.id.IP1mask);
+        IP2_1 = (EditText) findViewById(R.id.IP2_1);
+        IP2_2 = (EditText) findViewById(R.id.IP2_2);
+        IP2_3 = (EditText) findViewById(R.id.IP2_3);
+        IP2_4 = (EditText) findViewById(R.id.IP2_4);
+        IP2_mask = (EditText) findViewById(R.id.IP2mask);
+
+        TextView textout = (TextView) findViewById(R.id.result1);
+        String ipout = "IP1 is:" + IP1_1.getText() + "." + IP1_2.getText() + "." + IP1_3.getText() + "." + IP1_4.getText();
+        textout.setText(ipout);
+        TextView textout2 = (TextView) findViewById(R.id.result2);
+        String ipout2 = "IP2 is:" + IP2_1.getText() + "." + IP2_2.getText() + "." + IP2_3.getText() + "." + IP2_4.getText();
+        textout2.setText(ipout2);
     }
 }
