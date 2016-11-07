@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculateNet(View view){
         EditText firstByteIP1 = (EditText) findViewById(R.id.IP1_1);
-        EditText result = (EditText) findViewById(R.id.result);
-        result.setText(firstByteIP1 + "AA");
+        TextView textout = (TextView) findViewById(R.id.result);
+
+        textout.setText(firstByteIP1.getText());
     }
 }

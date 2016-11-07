@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:text="/"
             android:ems="10"
             android:layout_weight="0.20"
             android:id="@+id/IP1mask"/>
@@ -61,15 +62,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_send"
-        android:onClick="CalculateNet"
+        android:onClick="calculateNet"
         android:layout_marginLeft="300dp"/>
 
-    <EditText
+    <TextView
+        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="none"
-        android:text="Yes or no"
-        android:ems="10"
-        android:id="@+id/result"/>
+        android:id="@+id/result"
+        android:textSize="19sp"/>
+
 
 </LinearLayout>
