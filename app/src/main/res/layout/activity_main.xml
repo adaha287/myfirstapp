@@ -3,25 +3,73 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
-    <EditText android:id="@+id/firstIP"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:hint="@string/edit_message"
-        android:inputType="phone"
-         />
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <EditText android:id="@+id/secondIP"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:hint="@string/edit_message"
-        android:inputType="phone"
-        />
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP1_1" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP1_2" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP1_3" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP1_4" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.20"
+            android:id="@+id/IP1mask"/>
+
+    </LinearLayout>
+
+
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_send"
-        android:onClick="sendMessage"
+        android:onClick="CalculateNet"
         android:layout_marginLeft="300dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:text="Yes or no"
+        android:ems="10"
+        android:id="@+id/result"/>
+
 </LinearLayout>

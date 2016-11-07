@@ -15,11 +15,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(message);
-
+        TextView ip1 = new TextView(this);
+        ip1.setTextSize(40);
+        ip1.setText(message);
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);
-        layout.addView(textView);
+        layout.addView(ip1);
     }
 }
