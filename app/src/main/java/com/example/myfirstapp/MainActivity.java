@@ -53,11 +53,33 @@ public class MainActivity extends AppCompatActivity {
         IP2_mask = (EditText) findViewById(R.id.IP2mask);
 
         TextView textout = (TextView) findViewById(R.id.result1);
-        
-        String ipout = "IP1 is:" + IP1_1.getText() + "." + IP1_2.getText() + "." + IP1_3.getText() + "." + IP1_4.getText();
-        textout.setText(ipout);
-        TextView textout2 = (TextView) findViewById(R.id.result2);
-        String ipout2 = "IP2 is:" + IP2_1.getText() + "." + IP2_2.getText() + "." + IP2_3.getText() + "." + IP2_4.getText();
-        textout2.setText(ipout2);
+        if(IPokey(IP1_1, IP1_2, IP1_3, IP1_4)) {
+            String ipout = "IP1 is:" + IP1_1.getText() + "." + IP1_2.getText() + "." + IP1_3.getText() + "." + IP1_4.getText();
+            textout.setText(ipout);
+        }
+        else {
+            //write error message
+
+        }
+        if(IPokey(IP2_1, IP2_2, IP2_3, IP2_4)){
+            TextView textout2 = (TextView) findViewById(R.id.result2);
+            String ipout2 = "IP2 is:" + IP2_1.getText() + "." + IP2_2.getText() + "." + IP2_3.getText() + "." + IP2_4.getText();
+            textout2.setText(ipout2);
+        }
+        else{
+            //write error message
+        }
+    }
+
+    public boolean IPokey(EditText IP1,EditText IP2, EditText IP3, EditText IP4){
+        if (Integer.parseInt(IP1.getText().toString()) > 255 ||
+                Integer.parseInt(IP2.getText().toString()) > 255 ||
+                Integer.parseInt(IP3.getText().toString()) > 255 ||
+                Integer.parseInt(IP4.getText().toString()) > 255){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }
