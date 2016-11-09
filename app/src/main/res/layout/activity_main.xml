@@ -20,36 +20,46 @@
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
-            android:id="@+id/IP1_1" />
+            android:id="@+id/IP1_1"
+            android:nextFocusForward="@id/IP1_2"
+            android:maxLength="3"/>
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP1_3"
+            android:maxLength="3"
             android:id="@+id/IP1_2" />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP1_4"
+            android:maxLength="3"
             android:id="@+id/IP1_3" />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP1mask"
+            android:maxLength="3"
             android:id="@+id/IP1_4" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:text="/"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP2_1"
+            android:maxLength="3"
             android:id="@+id/IP1mask"/>
 
     </LinearLayout>
@@ -68,41 +78,52 @@
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP2_2"
+            android:maxLength="3"
             android:id="@+id/IP2_1" />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP2_3"
+            android:maxLength="3"
             android:id="@+id/IP2_2" />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP2_4"
+            android:maxLength="3"
             android:id="@+id/IP2_3" />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/IP2mask"
+            android:maxLength="3"
             android:id="@+id/IP2_4" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:inputType="number"
             android:text="/"
             android:ems="10"
             android:layout_weight="0.20"
+            android:nextFocusForward="@id/button_send"
+            android:maxLength="3"
             android:id="@+id/IP2mask"/>
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/button_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_send"

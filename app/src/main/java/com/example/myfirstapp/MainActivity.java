@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         IP2_mask = (EditText) findViewById(R.id.IP2mask);
 
         TextView textout = (TextView) findViewById(R.id.result1);
+        
         String ipout = "IP1 is:" + IP1_1.getText() + "." + IP1_2.getText() + "." + IP1_3.getText() + "." + IP1_4.getText();
         textout.setText(ipout);
         TextView textout2 = (TextView) findViewById(R.id.result2);
