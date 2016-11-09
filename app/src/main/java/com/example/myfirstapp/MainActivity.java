@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         IP2_mask = (EditText) findViewById(R.id.IP2mask);
 
         TextView textout = (TextView) findViewById(R.id.result1);
-        if(IPokey(IP1_1, IP1_2, IP1_3, IP1_4)) {
+        if(IPokey(IP1_1, IP1_2, IP1_3, IP1_4) && maskOkey(IP1_mask)) {
             String ipout = "IP1 is:" + IP1_1.getText() + "." + IP1_2.getText() + "." + IP1_3.getText() + "." + IP1_4.getText();
             textout.setText(ipout);
         }
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             //write error message
 
         }
-        if(IPokey(IP2_1, IP2_2, IP2_3, IP2_4)){
+        if(IPokey(IP2_1, IP2_2, IP2_3, IP2_4) && maskOkey(IP2_mask)){
             TextView textout2 = (TextView) findViewById(R.id.result2);
             String ipout2 = "IP2 is:" + IP2_1.getText() + "." + IP2_2.getText() + "." + IP2_3.getText() + "." + IP2_4.getText();
             textout2.setText(ipout2);
@@ -80,6 +80,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             return true;
+        }
+    }
+
+    public boolean maskOkey(EditText IPmask){
+        if(Integer.parseInt(IPmask.getText().toString()) < 32 && Integer.parseInt(IPmask.getText().toString()) >= 0){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
