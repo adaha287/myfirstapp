@@ -41,6 +41,8 @@
             android:nextFocusForward="@+id/IP1_4"
             android:maxLength="3"
             android:id="@+id/IP1_3" />
+
+
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="50dp"
@@ -51,11 +53,20 @@
             android:maxLength="3"
             android:id="@+id/IP1_4" />
 
+        <TextView
+            android:text="/"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:id="@+id/IP1_slash"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:ems="10" />
+
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:text="/"
             android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP2_1"
@@ -109,11 +120,20 @@
             android:maxLength="3"
             android:id="@+id/IP2_4" />
 
+        <TextView
+            android:text="/"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:id="@+id/IP1_slash"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:ems="10" />
+
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:text="/"
             android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/button_send"
