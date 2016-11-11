@@ -15,63 +15,56 @@
         android:weightSum="1">
 
         <EditText
+            android:id="@+id/IP1_1"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
-            android:id="@+id/IP1_1"
             android:nextFocusForward="@+id/IP1_2"
             android:maxLength="3"/>
         <EditText
+            android:id="@+id/IP1_2"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP1_3"
-            android:maxLength="3"
-            android:id="@+id/IP1_2" />
+            android:maxLength="3" />
         <EditText
+            android:id="@+id/IP1_3"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP1_4"
-            android:maxLength="3"
-            android:id="@+id/IP1_3" />
+            android:maxLength="3" />
 
 
         <EditText
+            android:id="@+id/IP1_4"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP1mask"
-            android:maxLength="3"
-            android:id="@+id/IP1_4" />
-
+            android:maxLength="3" />
         <TextView
+            android:id="@+id/IP1_slash"
             android:text="/"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:id="@+id/IP1_slash"
             android:textAlignment="gravity"
             android:gravity="center"
-            android:textSize="20dp"
-            android:ems="10" />
+            android:textSize="20dp" />
 
         <EditText
+            android:id="@+id/IP1mask"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP2_1"
-            android:maxLength="3"
-            android:id="@+id/IP1mask"/>
+            android:maxLength="3"/>
 
     </LinearLayout>
 
@@ -84,61 +77,55 @@
         android:weightSum="1">
 
         <EditText
+            android:id="@+id/IP2_1"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP2_2"
-            android:maxLength="3"
-            android:id="@+id/IP2_1" />
+            android:maxLength="3" />
         <EditText
+            android:id="@+id/IP2_2"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP2_3"
-            android:maxLength="3"
-            android:id="@+id/IP2_2" />
+            android:maxLength="3"/>
         <EditText
+            android:id="@+id/IP2_3"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP2_4"
-            android:maxLength="3"
-            android:id="@+id/IP2_3" />
+            android:maxLength="3"/>
         <EditText
+            android:id="@+id/IP2_4"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/IP2mask"
-            android:maxLength="3"
-            android:id="@+id/IP2_4" />
+            android:maxLength="3" />
 
         <TextView
+            android:id="@+id/IP2_slash"
             android:text="/"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:id="@+id/IP1_slash"
             android:textAlignment="gravity"
             android:gravity="center"
-            android:textSize="20dp"
-            android:ems="10" />
+            android:textSize="20dp" />
 
         <EditText
+            android:id="@+id/IP2mask"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:inputType="number"
-            android:ems="10"
             android:layout_weight="0.20"
             android:nextFocusForward="@+id/button_send"
-            android:maxLength="3"
-            android:id="@+id/IP2mask"/>
+            android:maxLength="3"/>
 
     </LinearLayout>
 
@@ -151,17 +138,17 @@
         android:layout_marginLeft="300dp"/>
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/result1"
+        android:text="IP will be shown here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/result1"
         android:textSize="19sp"/>
     <TextView
-        android:text="TextView"
+        android:id="@+id/result2"
+        android:text="IP will be shown here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/result2"
-        android:textSize="19sp"/>
+        android:textSize="19sp" />
 
 
 </LinearLayout>
