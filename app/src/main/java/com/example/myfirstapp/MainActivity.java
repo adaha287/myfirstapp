@@ -47,86 +47,84 @@ public class MainActivity extends AppCompatActivity {
 
         if (inputOkey()) {
             TextView textout = (TextView) findViewById(R.id.result1);
-            if (IPokey(IP1_1, IP1_2, IP1_3, IP1_4) && maskOkey(IP1_mask)) {
-                String network = calculateNetwork(IP1_1, IP1_2, IP1_3, IP1_4, IP1_mask);
-                System.out.println("IPokey returned true");
-                //String ipout = "IP1 is:" + IP1_1.getText().toString() + "." + IP1_2.getText().toString()  + "." + IP1_3.getText().toString()  + "." + IP1_4.getText().toString() ;
+            TextView textout2 = (TextView) findViewById(R.id.result2);
+            TextView result = (TextView) findViewById(R.id.result3);
+            String network;
+            String network2;
+
+            if (IPokey(IP1_1, IP1_2, IP1_3, IP1_4) && maskOkey(IP1_mask) && IPokey(IP2_1, IP2_2, IP2_3, IP2_4) && maskOkey(IP2_mask)) {
+
+                network = calculateNetwork(IP1_1, IP1_2, IP1_3, IP1_4, IP1_mask);
+                network2 = calculateNetwork(IP2_1, IP2_2, IP2_3, IP2_4, IP2_mask);
                 textout.setText(network);
-            } else {
-                //write error message
-                System.out.println("IPokey1 returned false");
-            }
-            if (IPokey(IP2_1, IP2_2, IP2_3, IP2_4) && maskOkey(IP2_mask)) {
-                TextView textout2 = (TextView) findViewById(R.id.result2);
-                String ipout2 = "IP2 is:" + IP2_1.getText().toString()  + "." + IP2_2.getText().toString()  + "." + IP2_3.getText().toString()  + "." + IP2_4.getText().toString() ;
-                String network2 = calculateNetwork(IP2_1, IP2_2, IP2_3, IP2_4, IP2_mask);
                 textout2.setText(network2);
-            } else {
-                //write error message
+                if(network.equals(network2)){
+                    result.setText("IP1 and IP2 are in the same network.");
+                }
+                else{
+                    result.setText("IP1 and IP2 are NOT in the same network.");
+                }
+            }
+            else {
+
             }
         }
         else{
             System.out.println("You got some problem, input not okey, try again!");
         }
-    }
+}
 
 
     public String calculateNetwork(EditText IP1, EditText IP2, EditText IP3, EditText IP4, EditText IPmask){
 
+        
         String firstByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP1.getText().toString()))).replace(" ", "0");
         String secondByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP2.getText().toString()))).replace(" ", "0");
         String thirdByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP3.getText().toString()))).replace(" ", "0");
         String fourthByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP4.getText().toString()))).replace(" ", "0");
 
         int mask = Integer.parseInt(IPmask.getText().toString());
-        System.out.println("Mask is:" + mask);
-        String net = new String();
-
-        System.out.println("String net created");
+        String netBinary = new String();
         char[] charArray = new char[32];
-        System.out.println("CharArray created");
+
 
         for(int i = 0; i < 8; i++){
 
             charArray[i] = firstByte.charAt(i);
-            System.out.println("first byte, i=" + i + " : "+ charArray[i]);
-        }
 
-        System.out.println("First byte done");
+        }
 
         for(int i = 0; i < 8; i++){
             charArray[8+i] = secondByte.charAt(i);
-            System.out.println("Second byte, i=" + i + " : "+ charArray[8+i]);
+
         }
-        System.out.println("Second byte done");
+
 
         for(int i = 0; i < 8; i++){
             charArray[16+i] = thirdByte.charAt(i);
-            System.out.println("third byte, i=" + i + " : "+ charArray[16+i]);
         }
-        System.out.println("Third byte done");
+
 
         for(int i = 0; i < 8; i++){
             charArray[24+i] = fourthByte.charAt(i);
-            System.out.println("fourth byte, i=" + i + " : "+ charArray[24+i]);
+
         }
-        System.out.println("Fourth byte done");
-
-
 
         for(int i = mask; i < 32; i++){
             charArray[i] = '0';
         }
         for(int i = 0; i < 32; i++){
             System.out.println(i + " : "+ String.valueOf(charArray[i]));
-            net += charArray[i];
+            netBinary += charArray[i];
         }
-        System.out.println("Net is: " + net);
-        return net;
+        System.out.println("Net is: " + netBinary);
+        return netBinary;
     }
 
+
+    //Check so that the IP-bytes are in range
     public boolean IPokey(EditText IP1,EditText IP2, EditText IP3, EditText IP4){
-       if (Integer.parseInt(IP1.getText().toString()) > 255 ||
+        if (Integer.parseInt(IP1.getText().toString()) > 255 ||
                 Integer.parseInt(IP2.getText().toString()) > 255 ||
                 Integer.parseInt(IP3.getText().toString()) > 255 ||
                 Integer.parseInt(IP4.getText().toString()) > 255 ||
@@ -135,27 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 Integer.parseInt(IP3.getText().toString()) < 0 ||
                 Integer.parseInt(IP4.getText().toString()) < 0){
 
-           AlertDialog.Builder a1 = new AlertDialog.Builder(MainActivity.this);
-           // Setting Dialog Title
-           a1.setTitle("Unacceptable number entered");
-
-           // Setting Dialog Message
-           a1.setMessage("All IP numbers must be from 0 to 255!");
-
-           a1.setPositiveButton("OK",
-                   new DialogInterface.OnClickListener() {
-                       public void onClick(DialogInterface dialog,
-                                           int button1) {
-                           // if this button is clicked, close
-                           // current activity
-                           dialog.cancel();
-                       }
-
-                   });
-
-           // Showing Alert Message
-           AlertDialog alertDialog = a1.create();
-           a1.show();
+            showDialog("Unacceptable number entered", "All IP numbers must be from 0 to 255!");
 
             return false;
         }
@@ -164,33 +142,34 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Showing an alertbox with title and message
+    public void showDialog(String title, String message){
+        AlertDialog.Builder a1 = new AlertDialog.Builder(MainActivity.this);
+        // Setting Dialog Title
+        a1.setTitle(title);
+
+        // Setting Dialog Message
+        a1.setMessage(message);
+
+        a1.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int button1) {
+                        // if this button is clicked, close
+                        // current activity
+                        dialog.cancel();
+                    }
+                });
+        // Showing Alert Message
+        AlertDialog alertDialog = a1.create();
+        a1.show();
+    }
+
+    //Check if the mask is in range
     public boolean maskOkey(EditText IPmask){
         if(Integer.parseInt(IPmask.getText().toString()) < 32 && Integer.parseInt(IPmask.getText().toString()) >= 0){
-
             return true;
         }
         else{
-            AlertDialog.Builder a1 = new AlertDialog.Builder(MainActivity.this);
-            // Setting Dialog Title
-            a1.setTitle("Unacceptable IP mask entered");
-
-            // Setting Dialog Message
-            a1.setMessage("The mask must be in the range 1 to 32");
-
-            a1.setPositiveButton("OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,
-                                            int button1) {
-                            // if this button is clicked, close
-                            // current activity
-                            dialog.cancel();
-                        }
-
-                    });
-
-            // Showing Alert Message
-            AlertDialog alertDialog = a1.create();
-            a1.show();
+            showDialog("Unacceptable IP mask entered","The mask must be in the range 1 to 32");
             return false;
         }
     }
@@ -223,29 +202,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch(NumberFormatException e)
         {
-            AlertDialog.Builder a1 = new AlertDialog.Builder(MainActivity.this);
-            System.out.println("error");
-
-            // Setting Dialog Title
-            a1.setTitle("Alert Dialog");
-
-            // Setting Dialog Message
-            a1.setMessage("You have not entered a number or entered an invalid number!");
-
-            a1.setPositiveButton("OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,
-                                            int button1) {
-                            // if this button is clicked, close
-                            // current activity
-                            dialog.cancel();
-                        }
-
-                    });
-
-            // Showing Alert Message
-            AlertDialog alertDialog = a1.create();
-            a1.show();
+            showDialog("Input error", "Number missing or invalid number!");
             return false;
         }
         return true;
