@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView textout2 = (TextView) findViewById(R.id.result2);
                 String ipout2 = "IP2 is:" + IP2_1.getText().toString()  + "." + IP2_2.getText().toString()  + "." + IP2_3.getText().toString()  + "." + IP2_4.getText().toString() ;
                 String network2 = calculateNetwork(IP2_1, IP2_2, IP2_3, IP2_4, IP2_mask);
-                textout2.setText(ipout2);
+                textout2.setText(network2);
             } else {
                 //write error message
             }
@@ -77,12 +77,6 @@ public class MainActivity extends AppCompatActivity {
         String secondByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP2.getText().toString()))).replace(" ", "0");
         String thirdByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP3.getText().toString()))).replace(" ", "0");
         String fourthByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP4.getText().toString()))).replace(" ", "0");
-
-
-        System.out.println("First: " + firstByte);
-        System.out.println("Second: " + secondByte);
-        System.out.println("third: " + thirdByte);
-        System.out.println("fourth: " + fourthByte);
 
         int mask = Integer.parseInt(IPmask.getText().toString());
         System.out.println("Mask is:" + mask);
@@ -121,11 +115,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         for(int i = mask; i < 32; i++){
-            charArray[i] = 0;
+            charArray[i] = '0';
         }
         for(int i = 0; i < 32; i++){
             System.out.println(i + " : "+ String.valueOf(charArray[i]));
-            net.concat(String.valueOf(charArray[i]));
+            net += charArray[i];
         }
         System.out.println("Net is: " + net);
         return net;
