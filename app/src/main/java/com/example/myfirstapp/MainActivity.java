@@ -20,19 +20,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /** Called when the user clicks the Send button */
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText IP1 = (EditText) findViewById(R.id.IP1_1);
-        EditText IP2 = (EditText) findViewById(R.id.IP1_2);
-        String message1 = IP1.getText().toString();
-        //String message2 = IP2.getText().toString();
-        //Boolean smaller = message1;
-        intent.putExtra(EXTRA_MESSAGE, message1);
-
-        startActivity(intent);
-    }
-
     public void calculateNet(View view) {
         EditText IP1_1 = (EditText) findViewById(R.id.IP1_1);
         EditText IP1_2 = (EditText) findViewById(R.id.IP1_2);
@@ -56,8 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
                 network = calculateNetwork(IP1_1, IP1_2, IP1_3, IP1_4, IP1_mask);
                 network2 = calculateNetwork(IP2_1, IP2_2, IP2_3, IP2_4, IP2_mask);
+
+                network = binToDec(network);
+                network2 = binToDec(network2);
+
                 textout.setText(network);
                 textout2.setText(network2);
+
                 if(network.equals(network2)){
                     result.setText("IP1 and IP2 are in the same network.");
                 }
@@ -66,18 +58,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             else {
-
+                showDialog("Error", "Your input is not correct, try again");
             }
         }
         else{
-            System.out.println("You got some problem, input not okey, try again!");
+            showDialog("Error", "Your input is not correct, try again");
         }
 }
 
-
+    //Calculate what network the IP address belongs to.
     public String calculateNetwork(EditText IP1, EditText IP2, EditText IP3, EditText IP4, EditText IPmask){
 
-        
+        //Convert each byte to binary, add leading zeros to get 8 digits.
         String firstByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP1.getText().toString()))).replace(" ", "0");
         String secondByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP2.getText().toString()))).replace(" ", "0");
         String thirdByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP3.getText().toString()))).replace(" ", "0");
@@ -89,35 +81,28 @@ public class MainActivity extends AppCompatActivity {
 
 
         for(int i = 0; i < 8; i++){
-
             charArray[i] = firstByte.charAt(i);
-
         }
 
         for(int i = 0; i < 8; i++){
             charArray[8+i] = secondByte.charAt(i);
-
         }
-
 
         for(int i = 0; i < 8; i++){
             charArray[16+i] = thirdByte.charAt(i);
         }
 
-
         for(int i = 0; i < 8; i++){
             charArray[24+i] = fourthByte.charAt(i);
-
         }
 
+        //Put zeros in the host part of the address
         for(int i = mask; i < 32; i++){
             charArray[i] = '0';
         }
         for(int i = 0; i < 32; i++){
-            System.out.println(i + " : "+ String.valueOf(charArray[i]));
             netBinary += charArray[i];
         }
-        System.out.println("Net is: " + netBinary);
         return netBinary;
     }
 
@@ -134,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 Integer.parseInt(IP4.getText().toString()) < 0){
 
             showDialog("Unacceptable number entered", "All IP numbers must be from 0 to 255!");
-
             return false;
         }
         else{
@@ -174,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Check that all input is ints
     public boolean inputOkey(){
         EditText IP1_1 = (EditText) findViewById(R.id.IP1_1);
         EditText IP1_2 = (EditText) findViewById(R.id.IP1_2);
@@ -206,6 +191,16 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    public String binToDec(String network){
+        int b1 = Integer.parseInt(network.substring(0,8), 2);
+        int b2 = Integer.parseInt(network.substring(8,16), 2);
+        int b3 = Integer.parseInt(network.substring(16,24), 2);
+        int b4 = Integer.parseInt(network.substring(24,32), 2);
+        String newNet = String.valueOf(b1) + "." + String.valueOf(b2) + "." + String.valueOf(b3) +
+                "." + String.valueOf(b4);
+        return newNet;
     }
 }
 
