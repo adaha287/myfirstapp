@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 textout.setText(network);
             } else {
                 //write error message
-                System.out.println("IPokey returned false");
+                System.out.println("IPokey1 returned false");
             }
             if (IPokey(IP2_1, IP2_2, IP2_3, IP2_4) && maskOkey(IP2_mask)) {
                 TextView textout2 = (TextView) findViewById(R.id.result2);
@@ -66,33 +66,68 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else{
-            System.out.println("You got some problem, try again!");
+            System.out.println("You got some problem, input not okey, try again!");
         }
     }
 
+
     public String calculateNetwork(EditText IP1, EditText IP2, EditText IP3, EditText IP4, EditText IPmask){
+
+        String firstByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP1.getText().toString()))).replace(" ", "0");
+        String secondByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP2.getText().toString()))).replace(" ", "0");
+        String thirdByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP3.getText().toString()))).replace(" ", "0");
+        String fourthByte = String.format("%8s", Integer.toBinaryString(Integer.parseInt(IP4.getText().toString()))).replace(" ", "0");
+
+
+        System.out.println("First: " + firstByte);
+        System.out.println("Second: " + secondByte);
+        System.out.println("third: " + thirdByte);
+        System.out.println("fourth: " + fourthByte);
+
         int mask = Integer.parseInt(IPmask.getText().toString());
-        String net = "";
+        System.out.println("Mask is:" + mask);
+        String net = new String();
+
+        System.out.println("String net created");
         char[] charArray = new char[32];
+        System.out.println("CharArray created");
 
         for(int i = 0; i < 8; i++){
-            charArray[i] = IP1.getText().charAt(i);
+
+            charArray[i] = firstByte.charAt(i);
+            System.out.println("first byte, i=" + i + " : "+ charArray[i]);
         }
+
+        System.out.println("First byte done");
+
         for(int i = 0; i < 8; i++){
-            charArray[8+i] = IP2.getText().charAt(i);
+            charArray[8+i] = secondByte.charAt(i);
+            System.out.println("Second byte, i=" + i + " : "+ charArray[8+i]);
         }
+        System.out.println("Second byte done");
+
         for(int i = 0; i < 8; i++){
-            charArray[16+i] = IP3.getText().charAt(i);
+            charArray[16+i] = thirdByte.charAt(i);
+            System.out.println("third byte, i=" + i + " : "+ charArray[16+i]);
         }
+        System.out.println("Third byte done");
+
         for(int i = 0; i < 8; i++){
-            charArray[24+i] = IP4.getText().charAt(i);
+            charArray[24+i] = fourthByte.charAt(i);
+            System.out.println("fourth byte, i=" + i + " : "+ charArray[24+i]);
         }
+        System.out.println("Fourth byte done");
+
+
+
         for(int i = mask; i < 32; i++){
             charArray[i] = 0;
         }
         for(int i = 0; i < 32; i++){
+            System.out.println(i + " : "+ String.valueOf(charArray[i]));
             net.concat(String.valueOf(charArray[i]));
         }
+        System.out.println("Net is: " + net);
         return net;
     }
 
